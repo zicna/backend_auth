@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# * for BCrypt::Password.new....
+userOne = User.create(username: 'userOne', password: '1234', bio: 'bio', avatar: 'avatar')
