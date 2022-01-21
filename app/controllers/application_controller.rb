@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
         request.headers['Authorization']
     end
 
-    def decode_token(token)
+    def decoded_token(token)
 
         if auth_header
             token = auth_header.split(' ')[1]
@@ -17,5 +17,17 @@ class ApplicationController < ActionController::API
                 nil
             end
         end
+    end
+
+    def current_user
+        if decoded_token
+            user_id = decoded_token[0]['user_id']
+            @user = User.find_by(id: user_id)
+
+        end
+    end
+
+    def logged_in?
+        !!current_user
     end
 end
